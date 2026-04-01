@@ -1,0 +1,118 @@
+.footprint-section {
+  position: relative;
+  z-index: 2;
+  padding: 100px 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: 4rem;
+  background: linear-gradient(135deg, #FFF 0%, #00F0FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(0, 240, 255, 0.5), transparent);
+    
+    @media (min-width: 768px) {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    &:nth-child(odd) {
+      justify-content: flex-start;
+      
+      .timeline-content {
+        margin-right: 40px;
+        margin-left: 0;
+      }
+    }
+    
+    &:nth-child(even) {
+      .timeline-content {
+        margin-left: 40px;
+      }
+    }
+  }
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 14px;
+  width: 14px;
+  height: 14px;
+  background: var(--bg-color);
+  border: 2px solid var(--accent-cyan);
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 10px var(--accent-cyan-glow);
+
+  @media (min-width: 768px) {
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: -1px;
+  }
+}
+
+.timeline-content {
+  width: calc(100% - 60px);
+  margin-left: 60px;
+  
+  @media (min-width: 768px) {
+    width: calc(50% - 40px);
+    margin-left: 0;
+  }
+
+  .timeline-meta {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--accent-cyan);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .role {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+}

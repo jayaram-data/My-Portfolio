@@ -1,0 +1,131 @@
+.hero-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 1;
+}
+
+.webgl-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.overlay-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  pointer-events: none; /* Let canvas capture mouse */
+}
+
+.intro-box {
+  max-width: 800px;
+  pointer-events: auto; /* Re-enable for buttons/text selection */
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.main-title {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 1.1;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 3rem;
+}
+
+.kpi-row {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+
+  .kpi {
+    position: relative;
+    padding-left: 1rem;
+    border-left: 2px solid var(--accent-cyan);
+
+    h2 {
+      font-size: 2.5rem;
+      color: #fff;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+  }
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 2;
+  
+  .mouse {
+    width: 20px;
+    height: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      background: var(--accent-cyan);
+      border-radius: 50%;
+      animation: scroll 2s infinite;
+    }
+  }
+
+  .scroll-text {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes scroll {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, 15px); opacity: 0; }
+}
